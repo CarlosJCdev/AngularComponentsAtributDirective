@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck, AfterContentChecked, AfterContentInit, 
+  AfterViewInit, AfterViewChecked, OnDestroy, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -28,9 +29,10 @@ import { Component, OnInit } from '@angular/core';
   `,
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterViewChecked, 
+AfterViewInit, OnDestroy, AfterContentChecked {
 
-  alerta: string= "alert-danger";
+alerta: string= "alert-danger";
 propiedades: boolean= true;
 loading:boolean= false;
 
@@ -38,9 +40,33 @@ ejecutar(){
   this.loading= true;
   setTimeout(()=> this.loading= false, 3000)
 }
-  constructor() { }
+  constructor() {
+    console.log("constructor")
+   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    console.log("ngOnInit");
+  }
+  ngOnChanges(){
+    console.log("onOnChanges");
+  }
+  ngDoCheck(){
+    console.log("onDoCheck");
+  }
+  ngAfterContentInit(){
+    console.log("onAfterContentInit");
+  }
+  ngAfterViewChecked(){
+    console.log("onAfterViewChecked");
+  } 
+  ngAfterViewInit(){
+    console.log("onAfterViewInit");
+  }
+  ngOnDestroy(){
+    console.log("onOnDestroy");
+  }
+  ngAfterContentChecked(){
+    console.log("onAfterContentChecked");
   }
 
 }
